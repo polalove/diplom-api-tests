@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("API тесты для работы с питомцами")
 public class PetApiTest extends ApiTestBase {
 
@@ -78,6 +79,7 @@ public class PetApiTest extends ApiTestBase {
     @Order(5)
     @DisplayName("Питомец не найден")
     void shouldReturnNotFoundForDeletedPet() {
+        System.out.println("Deleting pet with ID: " + createdPetId);
         ApiResult errorResponse = petService.getPetByIdNotFound(createdPetId);
 
         assertThat(errorResponse)
