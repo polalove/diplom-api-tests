@@ -106,16 +106,16 @@ test {
 
 ### Пример отчета в Telegram:
 
-<img src="/images/screenshots/" width="300" height="300">
+<img src="/images/screenshots/TelegramNotification.jpg" width="300" height="300">
 
 ### Пример Allure-отчета:
 
-<img src="/images/screenshots/" width="600">
+<img src="/images/screenshots/AllureReport.png" width="600">
 
 ### Прогон автотестов в Jenkins:
 
-<img src="/images/screenshots/" width="600">
+<img src="/images/screenshots/Jenkins.png" width="600">
 
 ### Интеграция с Allure TestOps:
 
-<img src="/images/screenshots/" width="600">
+<img src="/images/screenshots/AllureTestOps.png" width="600">
