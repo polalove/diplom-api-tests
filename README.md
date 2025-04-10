@@ -106,8 +106,6 @@ test {
 
 ### Пример отчета в Telegram:
 
-### Пример отчета в Telegram:
-
 <a href="#" target="_blank">
     <img src="/images/screenshots/TelegramNotification.jpg" alt="Telegram Notification" width="300" height="400">
 </a>
