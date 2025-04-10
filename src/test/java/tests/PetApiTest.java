@@ -10,7 +10,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("API тесты для работы с питомцами")
 public class PetApiTest extends ApiTestBase {
 

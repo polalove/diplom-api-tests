@@ -8,7 +8,7 @@ import data.OrderDataFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@DisplayName("API тесты для работы с заказами")
 public class OrderApiTest extends ApiTestBase {
 
     private static final OrderApiService storeService = new OrderApiService();
