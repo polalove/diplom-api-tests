@@ -106,16 +106,26 @@ test {
 
 ### Пример отчета в Telegram:
 
-<img src="/images/screenshots/TelegramNotification.jpg" width="300" height="300">
+### Пример отчета в Telegram:
+
+<a href="#" target="_blank">
+    <img src="/images/screenshots/TelegramNotification.jpg" alt="Telegram Notification" width="300" height="400">
+</a>
 
 ### Пример Allure-отчета:
 
-<img src="/images/screenshots/AllureReport.png" width="600">
+<a href="https://jenkins.autotests.cloud/job/api-diplom-tests/allure/#suites/12cb2cde760fee2fb9a4752bd75bbad0/cf6121cb8ce592b5/" target="_blank">
+    <img src="/images/screenshots/AllureReport.png" alt="Allure Report" width="600">
+</a>
 
 ### Прогон автотестов в Jenkins:
 
-<img src="/images/screenshots/Jenkins.png" width="600">
+<a href="https://jenkins.autotests.cloud/job/api-diplom-tests/" target="_blank">
+    <img src="/images/screenshots/Jenkins.png" alt="Jenkins Pipeline" width="600">
+</a>
 
 ### Интеграция с Allure TestOps:
 
-<img src="/images/screenshots/AllureTestOps.png" width="600">
+<a href="https://allure.autotests.cloud/project/4710/test-cases?treeId=0" target="_blank">
+    <img src="/images/screenshots/AllureTestOps.png" alt="Allure TestOps" width="600">
+</a>
