@@ -88,20 +88,32 @@ gradle allureServe
 Ключевые части `build.gradle`:
 ```groovy
 plugins {
-    id 'java'
+    id 'java-library'
     id 'io.qameta.allure' version '2.11.2'
+    id "io.freefair.lombok" version '6.0.0-m2'
 }
 
 dependencies {
-    testImplementation 'io.rest-assured:rest-assured:5.3.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+  testImplementation(
+          "com.codeborne:selenide:$selenideVersion",
+          "io.qameta.allure:allure-selenide:$allureVersion",
+          "io.rest-assured:rest-assured:$restAssuredVersion",
+          "io.rest-assured:json-schema-validator:$restAssuredVersion",
+          "io.qameta.allure:allure-rest-assured:$allureVersion",
+          "org.junit.jupiter:junit-jupiter:5.11.2",
+          "org.slf4j:slf4j-simple:2.0.7",
+          "org.assertj:assertj-core:3.26.0"
+  )
 }
 
-test {
-    useJUnitPlatform()
-    systemProperty 'allure.results.directory', 'build/allure-results'
+tasks.withType(Test) {
+  useJUnitPlatform()
+  testLogging {
+    lifecycle {
+      events "started", "skipped", "failed", "standard_error", "standard_out"
+      exceptionFormat "short"
+    }
+  }
 }
 ```
 
