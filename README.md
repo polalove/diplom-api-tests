@@ -63,12 +63,13 @@
 
 ## 🛠 Технологический стек
 
-| Компонент       | Версия    | Gradle-артефакт               |
-|-----------------|-----------|-------------------------------|
-| Java            | 17        | `java { toolchain { languageVersion = JavaLanguageVersion.of(17) } }` |
-| RestAssured     | 5.3.0     | `implementation 'io.rest-assured:rest-assured:5.3.0'` |
-| Allure Gradle   | 2.11.2    | `id "io.qameta.allure" version "2.11.2"` |
-| Lombok          | 1.18.24   | `compileOnly 'org.projectlombok:lombok:1.18.24'` |
+| Компонент       | Версия    | Gradle-артефакт |
+|-----------------|-----------|----------------|
+| Java            | 17        | Встроенная через toolchain |
+| RestAssured     | 5.3.1     | `implementation "io.rest-assured:*:$restAssuredVersion"` |
+| Allure          | 2.21.0    | `implementation "io.qameta.allure:*:$allureVersion"` |
+| JUnit 5         | 5.11.2    | `testImplementation "org.junit.jupiter:*:5.11.2"` |
+| Selenide        | 7.5.1     | `testImplementation "com.codeborne:selenide:$selenideVersion"` |
 
 ## 🚀 Запуск тестов
 
