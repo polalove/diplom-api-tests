@@ -3,64 +3,62 @@ package tests;
 import model.ApiResult;
 import model.Order;
 import org.junit.jupiter.api.*;
-import services.OrderApiService;
+import steps.OrderSteps;
 import data.OrderDataFactory;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("API тесты для работы с заказами")
 public class OrderApiTest extends ApiTestBase {
 
-    private static final OrderApiService storeService = new OrderApiService();
-    private static Long createdOrderId;
-    private static Order testOrder;
+    OrderSteps orderSteps = new OrderSteps();
+    private Long testOrderId;
+    private Order testOrder;
 
-    @BeforeAll
-    static void setUp() {
-        testOrder = OrderDataFactory.generateTestOrder();
+    @BeforeEach
+    void setUp() {
+        testOrderId = ThreadLocalRandom.current().nextLong(10000, 99999);
+        testOrder = OrderDataFactory.createTestOrder(testOrderId);
     }
 
     @Test
-    @org.junit.jupiter.api.Order(1)
-    @DisplayName("Создание нового заказа")
-    void createOrderTest() {
-        Order createdOrder = storeService.createOrder(testOrder);
-        createdOrderId = createdOrder.getId();
+    @DisplayName("Создание и получение заказа")
+    void createAndGetOrderTest() {
+        Order createdOrder = orderSteps.createOrder(testOrder);
 
-        assertThat(createdOrder.getId()).isEqualTo(testOrder.getId());
-        assertThat(createdOrder.getStatus()).isEqualTo(testOrder.getStatus());
-        assertThat(createdOrder.getPetId()).isEqualTo(testOrder.getPetId());
-        assertThat(createdOrder.getQuantity()).isEqualTo(testOrder.getQuantity());
-    }
-
-    @Test
-    @org.junit.jupiter.api.Order(2)
-    @DisplayName("Получение созданного заказа")
-    void getCreatedOrderTest() {
-        Order retrievedOrder = storeService.getOrder(createdOrderId);
-
-        assertThat(retrievedOrder)
+        assertThat(createdOrder)
                 .usingRecursiveComparison()
                 .ignoringFields("shipDate")
                 .isEqualTo(testOrder);
+
+        Order retrievedOrder = orderSteps.getOrder(createdOrder.getId());
+        assertThat(retrievedOrder)
+                .usingRecursiveComparison()
+                .ignoringFields("shipDate")
+                .isEqualTo(createdOrder);
     }
 
     @Test
-    @org.junit.jupiter.api.Order(3)
     @DisplayName("Удаление заказа")
     void deleteOrderTest() {
-        ApiResult deleteResponse = storeService.deleteOrder(createdOrderId);
-        assertThat(deleteResponse.getCode()).isEqualTo(200);
-        assertThat(deleteResponse.getMessage()).isEqualTo(createdOrderId.toString());
+        Order createdOrder = orderSteps.createOrder(testOrder);
+        ApiResult deleteResponse = orderSteps.deleteOrder(createdOrder.getId());
+
+        assertThat(deleteResponse)
+                .extracting(ApiResult::getCode, ApiResult::getMessage)
+                .containsExactly(200, createdOrder.getId().toString());
     }
 
     @Test
-    @org.junit.jupiter.api.Order(4)
-    @DisplayName("Попытка получить удаленный заказ")
-    void getDeletedOrderTest() {
-        ApiResult errorResponse = storeService.getOrderExpectingError(createdOrderId);
-        assertThat(errorResponse.getCode()).isEqualTo(1);
-        assertThat(errorResponse.getMessage()).isEqualTo("Order not found");
+    @DisplayName("Получение несуществующего заказа")
+    void getNonExistentOrderTest() {
+        Long nonExistentId = testOrderId + 1;
+        ApiResult errorResponse = orderSteps.getOrderExpectingError(nonExistentId);
+
+        assertThat(errorResponse)
+                .extracting(ApiResult::getCode, ApiResult::getMessage)
+                .containsExactly(1, "Order not found");
     }
 }

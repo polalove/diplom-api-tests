@@ -5,17 +5,17 @@
 ### Стек технологий
 
 <p align="center">
-<img width="6%" title="IntelijIDEA" src="images/logo/Intelij_IDEA.svg">
-<img width="6%" title="Java" src="images/logo/Java.svg">
-<img width="6%" title="Selenide" src="images/logo/Selenide.svg">
-<img width="6%" title="Selenoid" src="images/logo/Selenoid.svg">
-<img width="6%" title="Allure Report" src="images/logo/AllureReport.svg">
-<img width="5%" title="Allure TestOps" src="images/logo/AllureTestOps.svg">
-<img width="6%" title="Gradle" src="images/logo/Gradle.svg">
-<img width="6%" title="JUnit5" src="images/logo/JUnit5.svg">
-<img width="6%" title="GitHub" src="images/logo/Github.svg">
-<img width="6%" title="Jenkins" src="images/logo/Jenkins.svg">
-<img width="6%" title="Telegram" src="images/logo/Telegram.svg">
+  <a href="https://www.jetbrains.com/idea/" target="_blank"><img width="6%" title="IntelijIDEA" src="images/logo/Intelij_IDEA.svg"></a>
+  <a href="https://www.java.com" target="_blank"><img width="6%" title="Java" src="images/logo/Java.svg"></a>
+  <a href="https://selenide.org" target="_blank"><img width="6%" title="Selenide" src="images/logo/Selenide.svg"></a>
+  <a href="https://aerokube.com/selenoid/" target="_blank"><img width="6%" title="Selenoid" src="images/logo/Selenoid.svg"></a>
+  <a href="https://docs.qameta.io/allure/" target="_blank"><img width="6%" title="Allure Report" src="images/logo/AllureReport.svg"></a>
+  <a href="https://docs.qameta.io/allure-testops/" target="_blank"><img width="5%" title="Allure TestOps" src="images/logo/AllureTestOps.svg"></a>
+  <a href="https://gradle.org" target="_blank"><img width="6%" title="Gradle" src="images/logo/Gradle.svg"></a>
+  <a href="https://junit.org/junit5/" target="_blank"><img width="6%" title="JUnit5" src="images/logo/JUnit5.svg"></a>
+  <a href="https://github.com" target="_blank"><img width="6%" title="GitHub" src="images/logo/Github.svg"></a>
+  <a href="https://www.jenkins.io" target="_blank"><img width="6%" title="Jenkins" src="images/logo/Jenkins.svg"></a>
+  <a href="https://telegram.org" target="_blank"><img width="6%" title="Telegram" src="images/logo/Telegram.svg"></a>
 </p>
 
 ## 📌 Особенности
@@ -36,7 +36,7 @@
   │       ├── data/            # Фабрики тестовых данных
   │       ├── helpers/         # Allure-утилиты
   │       ├── model/           # DTO-модели
-  │       ├── services/        # API-клиенты
+  │       ├── steps/           # API-клиенты
   │       ├── specs/           # Спецификации
   │       └── tests/           # Тесты
   └── resources/
@@ -51,14 +51,14 @@
 - `ApiResult` - универсальный response
 
 ### Сервисы
-| Класс             | Методы                      |
-|-------------------|-----------------------------|
-| `PetApiService`   | CRUD + поиск по статусу     |
-| `OrderApiService` | Создание/получение/удаление|
+| Класс             | Методы                             |
+|-------------------|------------------------------------|
+| `PetApiService`   | CRUD + поиск по статусу питомца    |
+| `OrderApiService` | Создание/получение/удаление заказа |
 
 ### Тесты
-- **PetApiTest**: 6 сценариев (позитивные + негативные)
-- **OrderApiTest**: 4 сценария с проверкой бизнес-логики
+- **PetApiTest**: 3 сценария
+- **OrderApiTest**: 3 сценария
 
 
 ## 🛠 Технологический стек
@@ -117,26 +117,19 @@ tasks.withType(Test) {
 }
 ```
 
-### Пример отчета в Telegram:
+## 📊 Отчеты и интеграции
 
-<a href="#" target="_blank">
-    <img src="/images/screenshots/TelegramNotification.jpg" alt="Telegram Notification" width="300" height="400">
-</a>
+### Allure Report
+![Allure Dashboard](images/screenshots/AllureReport.png)
+**Ссылка:** [Открыть полный отчет Allure](https://jenkins.autotests.cloud/job/api-diplom-tests/allure/)
 
-### Пример Allure-отчета:
+### Jenkins Pipeline
+![Jenkins Build](images/screenshots/Jenkins.png)
+**Ссылка:** [Открыть Jenkins проект](https://jenkins.autotests.cloud/job/api-diplom-tests/)
 
-<a href="https://jenkins.autotests.cloud/job/api-diplom-tests/allure/#suites/12cb2cde760fee2fb9a4752bd75bbad0/cf6121cb8ce592b5/" target="_blank">
-    <img src="/images/screenshots/AllureReport.png" alt="Allure Report" width="600">
-</a>
+### Allure TestOps
+![TestOps Dashboard](images/screenshots/AllureTestOps.png)
+**Ссылка:** [Открыть Allure TestOps](https://allure.autotests.cloud/project/4710/test-cases)
 
-### Прогон автотестов в Jenkins:
-
-<a href="https://jenkins.autotests.cloud/job/api-diplom-tests/" target="_blank">
-    <img src="/images/screenshots/Jenkins.png" alt="Jenkins Pipeline" width="600">
-</a>
-
-### Интеграция с Allure TestOps:
-
-<a href="https://allure.autotests.cloud/project/4710/test-cases?treeId=0" target="_blank">
-    <img src="/images/screenshots/AllureTestOps.png" alt="Allure TestOps" width="600">
-</a>
+### Telegram Notifications
+<img src="images/screenshots/TelegramNotification.jpg" width="450" alt="Telegram Notifications">  

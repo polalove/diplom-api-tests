@@ -1,5 +1,6 @@
-package services;
+package steps;
 
+import io.qameta.allure.Step;
 import model.Pet;
 import model.ApiResult;
 import specs.ApiSpecs;
@@ -8,8 +9,9 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class PetApiService {
+public class PetSteps {
 
+    @Step("Создать нового питомца")
     public Pet createPet(Pet pet) {
         return given()
                 .spec(ApiSpecs.requestSpec())
@@ -22,6 +24,7 @@ public class PetApiService {
                 .as(Pet.class);
     }
 
+    @Step("Получить питомца по ID: {petId}")
     public Pet getPetById(Long petId) {
         return given()
                 .spec(ApiSpecs.requestSpec())
@@ -33,6 +36,7 @@ public class PetApiService {
                 .as(Pet.class);
     }
 
+    @Step("Найти питомцев по статусу: {status}")
     public List<Pet> getPetsByStatus(String status) {
         return given()
                 .spec(ApiSpecs.requestSpec())
@@ -46,6 +50,7 @@ public class PetApiService {
                 .getList("", Pet.class);
     }
 
+    @Step("Удалить питомца по ID: {petId}")
     public ApiResult deletePet(Long petId) {
         return given()
                 .spec(ApiSpecs.requestSpec())
@@ -58,6 +63,7 @@ public class PetApiService {
                 .as(ApiResult.class);
     }
 
+    @Step("Попытка получить несуществующего питомца по ID: {petId}")
     public ApiResult getPetByIdNotFound(Long petId) {
         return given()
                 .spec(ApiSpecs.requestSpec())

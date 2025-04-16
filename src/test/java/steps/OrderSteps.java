@@ -1,4 +1,4 @@
-package services;
+package steps;
 
 import model.ApiResult;
 import model.Order;
@@ -7,7 +7,7 @@ import specs.ApiSpecs;
 
 import static io.restassured.RestAssured.given;
 
-public class OrderApiService {
+public class OrderSteps {
 
     @Step("Создание заказа")
     public Order createOrder(Order order) {
