@@ -132,4 +132,4 @@ tasks.withType(Test) {
 **Ссылка:** [Открыть Allure TestOps](https://allure.autotests.cloud/project/4710/test-cases)
 
 ### Telegram Notifications
-<img src="images/screenshots/TelegramNotification.jpg" width="450" alt="Telegram Notifications">  
+<img src="images/screenshots/TelegramNotification.png" width="450" alt="Telegram Notifications">  
